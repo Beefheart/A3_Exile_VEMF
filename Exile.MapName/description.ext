@@ -1,0 +1,14 @@
+class cfgFunctions
+{
+	class VEMF
+	{
+		tag = "VEMF";
+		class functions
+		{
+			file = "VEMFclient";
+			class typeText {};
+			class clientInit { postInit = 1; };
+		};
+	};
+	// other classes below
+};
