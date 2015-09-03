@@ -15,7 +15,7 @@
 class VEMFconfig
 {
 	/////////////////////////////
-	VEMF_version = 1.0716.14; /// Do NOT change
+	VEMF_version = 1.0717.7; /// Do NOT change
 	/////////////////////////////
 	/////// Configure VEMF here ///////
 	// Global settings
@@ -45,12 +45,12 @@ class VEMFconfig
 	class aiSkill // Minimum: 0 | Maximum: 1
 	{
 		accuracy = 0.25;
-		aimingShake = 0.3;
+		aimingShake = 0.35;
 		aimingSpeed = 0.15;
 		endurance = 0.25;
-		spotDistance = 0.3;
-		spotTime = 0.18;
-		courage = 0.4;
+		spotDistance = 0.5;
+		spotTime = 0.25;
+		courage = 0.7;
 		reloadSpeed = 0.15;
 		commanding = 0.5;
 		general = 0.15;
@@ -136,6 +136,7 @@ class VEMFconfig
 		minItemSlots = 2; // Minimum number of attachment slots in each loot crate
 		itemsLoot[] =
 		{ // The number after each classname means how much of that type will be put in crate. WARNING: DO NOT USE NUMBERS WITH DOTS!!!
+			{"Exile_Item_Flag",3},{"Exile_Item_FuelCanisterFull",2},{"Exile_Item_FuelCanisterEmpty",1},{"Exile_Item_InstaDoc",4},{"Exile_Item_Matches",3},{"Exile_Item_PlasticBottleFreshWater",5}
 		};
 
 		maxVestSlots = 4; // Maximum number of vest slots in each loot crate

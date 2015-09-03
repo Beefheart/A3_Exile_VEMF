@@ -22,7 +22,7 @@ private // Make sure that the vars in this function do not interfere with vars i
 _pos = [_this, 0, [], [[]]] call BIS_fnc_param;
 if (count _pos isEqualTo 3) then
 {
-	_locName = [_this, 1, formatText[""], [formatText[""]]] call BIS_fnc_param;
+	_locName = [_this, 1, "", [""]] call BIS_fnc_param;
 	if not(_locName isEqualTo "") then
 	{
 		_grpCount = [_this, 2, -1, [0]] call BIS_fnc_param;
@@ -31,7 +31,7 @@ if (count _pos isEqualTo 3) then
 			_unitsPerGrp = [_this, 3, -1, [0]] call BIS_fnc_param;
 			if (_unitsPerGrp > 0) then
 			{
-				_sldrClass = "O_Soldier_F";
+				_sldrClass = "B_G_Soldier_AR_F";
 				_groups = [];
 				_hc = "allowHeadLessClient" call VEMF_fnc_getSetting;
 				_skills = [["aiSkill"],["accuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"]] call VEMF_fnc_getSetting;
@@ -51,16 +51,17 @@ if (count _pos isEqualTo 3) then
 				for "_g" from 1 to _grpCount do
 				{
 					private ["_grp","_unit"];
-					_grp = createGroup RESISTANCE;
+					_grp = createGroup WEST;
 					_grp setBehaviour "AWARE";
 					_grp setCombatMode "RED";
 					_grp allowFleeing 0;
 
 					for "_u" from 1 to _unitsPerGrp do
 					{
-						_newPos = [_pos,0,70,1,0,200,0] call BIS_fnc_findSafePos; // Find Nearby Position
+						_newPos = [_pos,0,200,1,0,200,0] call BIS_fnc_findSafePos; // Find Nearby Position
 						_unit = _grp createUnit [_sldrClass, _newPos, [], 0, "FORM"]; // Create Unit There
 						_unit addMPEventHandler ["mpkilled","if (isDedicated) then { _killed = _this select 0; _killer = _this select 1; _nameKiller = name (_this select 1); _dist = _killed distance _killer; [_killed, _killer, _nameKiller, _dist] call VEMF_fnc_aiKilled }"];
+						_unit addRating -8000;
 						_units pushBack _unit;
 						// Set skills
 						_unit setSkill ["aimingAccuracy", _accuracy];

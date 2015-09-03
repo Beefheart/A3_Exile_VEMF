@@ -12,7 +12,7 @@ private
 	"_crate","_settings","_loot","_amount","_quant","_prim","_sec","_mags","_att","_items","_vests","_packs","_primaries","_secondaries",
 	"_magazines","_attachments","_items","_vests","_backpacks","_headGear","_blackList","_maxPrim","_minPrim","_maxSec","_minSec",
 	"_maxMagSlots","_minMagSlots","_maxAttSlots","_minAttSlots","_maxItemSlots","_minItemSlots","_maxVestSlots","_minVestSlots",
-	"_maxHeadGearSlots","_minHeadGearSlots","_maxBagSlots","_minBagSlots"
+	"_maxHeadGearSlots","_minHeadGearSlots","_maxBagSlots","_minBagSlots","_ok"
 ];
 
 _ok = false;
