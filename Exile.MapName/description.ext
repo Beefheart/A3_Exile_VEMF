@@ -6,9 +6,15 @@ class cfgFunctions
 		class functions
 		{
 			file = "VEMFclient";
-			class typeText {};
-			class clientInit { postInit = 1; };
+			class vemfClientMessage {};
+			class vemfClientInit { postInit = 1; };
 		};
 	};
-	// other classes below
+};
+
+#include "scarCODE\global.hpp" // can be retreived from the scarcode script bundle on GitHub
+
+class RscTitles
+{
+	#include "VEMFclient\hpp_mainVemfClient.hpp"
 };
