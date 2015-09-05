@@ -1,6 +1,7 @@
 ## VEMF Changelog
 
 #### `v1.0718.11`
+**NOTE:** VEMFclient code has been changed! <br />
 **[ADDED]** AI difficulty presets<br />
 **[CHANGED]** Default cleanMines setting changed from 2 to 1 <br />
 **[CHANGED]** fn_broadCast.sqf for new broadcast system <br />
