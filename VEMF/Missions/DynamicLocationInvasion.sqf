@@ -24,7 +24,7 @@ if (VEMF_invasCount < _maxInvasions) then
 		["DLI", 1, format["Invading %1...", _loc select 0]] call VEMF_fnc_log;
 		VEMF_invasCount = VEMF_invasCount + 1;
 		// Send message to all players
-		_newMissionMsg = [format["%1 invaded @ %2", _loc select 0, mapGridPosition (_loc select 1)], ""] call VEMF_fnc_broadCast;
+		_newMissionMsg = [format["%1 invaded near %2", _loc select 0, mapGridPosition (_loc select 1)], ""] call VEMF_fnc_broadCast;
 		if _newMissionMsg then
 		{
 			// Create/place the marker
@@ -60,7 +60,7 @@ if (VEMF_invasCount < _maxInvasions) then
 					if _done then
 					{
 						// Broadcast
-						_completeMsg = [format["%1 has been freed :) @ %2", _loc select 0, mapGridPosition (_loc select 1)], ""] call VEMF_fnc_broadCast;
+						_completeMsg = [format["%1 has been cleared by the exiled near %2", _loc select 0, mapGridPosition (_loc select 1)], ""] call VEMF_fnc_broadCast;
 						if _completeMsg then
 						{
 							// Choose a box
@@ -76,7 +76,7 @@ if (VEMF_invasCount < _maxInvasions) then
 							clearItemCargoGlobal _crate;
 							 _crate attachTo [_chute, [0,0,0]];
 							_crate allowDamage false;
-							["DLI", 1, format ["Crate parachuted At: %1 / Grid: %2", (getPosATL _crate), mapGridPosition (getPosATL _crate)]] call VEMF_fnc_log;
+							["DLI", 1, format ["Crate parachuted at: %1 / Grid: %2", (getPosATL _crate), mapGridPosition (getPosATL _crate)]] call VEMF_fnc_log;
 
 							// Mark the crate
 							// If night, attach a chemlight

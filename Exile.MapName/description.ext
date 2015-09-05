@@ -12,8 +12,6 @@ class cfgFunctions
 	};
 };
 
-#include "scarCODE\global.hpp" // can be retreived from the scarcode script bundle on GitHub
-
 class RscTitles
 {
 	#include "VEMFclient\hpp_mainVemfClient.hpp"
