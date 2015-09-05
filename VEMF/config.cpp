@@ -15,7 +15,7 @@
 class VEMFconfig
 {
 	/////////////////////////////
-	VEMF_version = 1.0717.7; /// Do NOT change
+	VEMF_version = 1.0718.11; /// Do NOT change
 	/////////////////////////////
 	/////// Configure VEMF here ///////
 	// Global settings
@@ -44,16 +44,59 @@ class VEMFconfig
 	// Global AI skill settings. They affect each VEMF unit for any default VEMF mission
 	class aiSkill // Minimum: 0 | Maximum: 1
 	{
-		accuracy = 0.25;
-		aimingShake = 0.35;
-		aimingSpeed = 0.15;
-		endurance = 0.25;
-		spotDistance = 0.5;
-		spotTime = 0.25;
-		courage = 0.7;
-		reloadSpeed = 0.15;
-		commanding = 0.5;
-		general = 0.15;
+		difficulty = "Veteran"; // Options: "Easy" "Normal" "Veteran" "Hardcore" | Default: Veteran
+		class Easy // AI looks stupid with this setting xD
+		{
+			accuracy = 0.1;
+			aimingShake = 0.25;
+			aimingSpeed = 0.075;
+			endurance = 0.15;
+			spotDistance = 0.3;
+			spotTime = 0.1;
+			courage = 0.35;
+			reloadSpeed = 0.1;
+			commanding = 0.3;
+			general = 0.15;
+		};
+		class Normal
+		{
+			accuracy = 0.15;
+			aimingShake = 0.2;
+			aimingSpeed = 0.1;
+			endurance = 0.2;
+			spotDistance = 0.4;
+			spotTime = 0.15;
+			courage = 0.5;
+			reloadSpeed = 0.15;
+			commanding = 0.4;
+			general = 0.15;
+		};
+		class Veteran
+		{
+			accuracy = 0.2;
+			aimingShake = 0.25;
+			aimingSpeed = 0.15;
+			endurance = 0.25;
+			spotDistance = 0.5;
+			spotTime = 0.2;
+			courage = 0.7;
+			reloadSpeed = 0.15;
+			commanding = 0.5;
+			general = 0.15;
+		};
+		class Hardcore // Also known as Aimbots
+		{
+			accuracy = 0.3;
+			aimingShake = 0.3;
+			aimingSpeed = 0.2;
+			endurance = 0.5;
+			spotDistance = 0.7;
+			spotTime = 0.25;
+			courage = 1;
+			reloadSpeed = 0.3;
+			commanding = 0.8;
+			general = 0.2;
+		};
 	};
 
 	class DLI // DynamicLocationInvasion settings
@@ -79,7 +122,7 @@ class VEMFconfig
 		placeMines = 1; // Set to -1 if you do not want Anti-Armor mines at missions | using infiSTAR? set _RAM to false
 		minesMode = 1; // 1 = Anti-Armor | 2 = Anti-Personell | 3 = Both Anti-Armor and Anti-Personell
 		minesAmount = 40; // Ignore if placeMines = -1;
-		cleanMines = 2; // 1 = remove mines when mission done | 2 = explode mines when mission done :D guarenteed chaos, LOL!
+		cleanMines = 1; // 1 = remove mines when mission done | 2 = explode mines when mission done :D guarenteed chaos, LOL!
 	};
 
 	// Loot crate configuration

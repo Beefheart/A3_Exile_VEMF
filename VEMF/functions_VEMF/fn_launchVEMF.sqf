@@ -14,3 +14,4 @@ uiNamespace setVariable ["vemfHCload", []];
 [] spawn VEMF_fnc_checkLoot; // Check loot tables if enabled
 [] spawn VEMF_fnc_missionTimer; // Launch mission timer
 west setFriend [independent, 0];
+independent setFriend [west, 0];

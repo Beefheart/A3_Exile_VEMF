@@ -24,15 +24,14 @@ if (VEMF_invasCount < _maxInvasions) then
 		["DLI", 1, format["Invading %1...", _loc select 0]] call VEMF_fnc_log;
 		VEMF_invasCount = VEMF_invasCount + 1;
 		// Send message to all players
-		_newMissionMsg = [["NEW MISSION:", "HOSTILE INVASION", format["LOCATION: %1 @ %2", _loc select 0, mapGridPosition (_loc select 1)], ""], ""] call VEMF_fnc_broadCast;
+		_newMissionMsg = [format["%1 invaded @ %2", _loc select 0, mapGridPosition (_loc select 1)], ""] call VEMF_fnc_broadCast;
 		if _newMissionMsg then
 		{
 			// Create/place the marker
-			_marker = createMarker [format["VEMF_DynaLocInva_ID%1", floor random 9000], (_loc select 1)];
+			_marker = createMarker [format["VEMF_DynaLocInva_ID%1", random 9000], (_loc select 1)];
 			_marker setMarkerShape "ICON";
-			_marker setMarkerType "b_inf";
-			_marker setMarkerColor "ColorEAST";
-			_marker setMarkerText format[" %1 INVADED!", _loc select 0];
+			_marker setMarkerType "o_inf";
+			_marker setMarkerColor "ColorBlack";
 
 			// Usage: COORDS, Radius
 			_playerNear = [_loc select 1, 800] call VEMF_fnc_waitForPlayers;
@@ -42,8 +41,8 @@ if (VEMF_invasCount < _maxInvasions) then
 				_spawned = [_loc select 1, _loc select 0, _grpCount, _groupUnits] call VEMF_fnc_spawnAI;
 				if not isNil "_spawned" then
 				{
-					private ["_minesPlaced"];
 					// Place mines if enabled
+					private ["_minesPlaced"];
 					_placeMines = ([["DLI"],["placeMines"]] call VEMF_fnc_getSetting) select 0;
 					if (_placeMines isEqualTo 1) then
 					{
@@ -61,7 +60,7 @@ if (VEMF_invasCount < _maxInvasions) then
 					if _done then
 					{
 						// Broadcast
-						_completeMsg = [["MISSION COMPLETED:", "HOSTILE INVASION", format["LOCATION: %1 @ %2", _loc select 0, mapGridPosition (_loc select 1)], ""], ""] call VEMF_fnc_broadCast;
+						_completeMsg = [format["%1 has been freed :) @ %2", _loc select 0, mapGridPosition (_loc select 1)], ""] call VEMF_fnc_broadCast;
 						if _completeMsg then
 						{
 							// Choose a box
@@ -105,7 +104,7 @@ if (VEMF_invasCount < _maxInvasions) then
 							VEMF_missionCount = VEMF_missionCount - 1;
 							// Blow/remove the mines
 							private ["_cleanMines"];
-							_cleanMines = [[["DLI"],["cleanMines"]] call VEMF_fnc_getSetting, 0, -1, [0]] call BIS_fnc_param;
+							_cleanMines = [[["DLI"],["cleanMines"]] call VEMF_fnc_getSetting, 0, 1, [0]] call BIS_fnc_param;
 							if (_cleanMines isEqualTo 2) then
 							{
 								{
@@ -137,8 +136,11 @@ if (VEMF_invasCount < _maxInvasions) then
 										_soundDuration = _soundSettings select 1;
 										for "_s" from 0 to _soundDuration do
 										{
-											playSound3D ["A3\Sounds_F\sfx\beep_target.wss", _crate, false, getPosATL _crate, 4, 1, 300];
-											uiSleep 2;
+											if not isNull _crate then
+											{
+												playSound3D ["A3\Sounds_F\sfx\beep_target.wss", _crate, false, getPosATL _crate, 8, 1, 50];
+												uiSleep 2;
+											};
 										};
 									};
 								};

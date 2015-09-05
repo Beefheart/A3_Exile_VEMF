@@ -5,7 +5,7 @@
 	will alert players
 
 	Params:
-	_this select 0: ANYTHING - thing to send
+	_this select 0: FORMATTED STRING - thing to send
 	_this select 1: STRING - mode to send to client
 
 	Returns:
@@ -13,21 +13,24 @@
 */
 
 private ["_msg","_mode","_sent"];
-_msg = _this select 0;
-_mode = _this select 1;
 _sent = false;
-if (count playableUnits > 0) then
+_msg = [_this, 0, format[""], [format[""]]] call BIS_fnc_param;
+if not(_msg isEqualTo format[""]) then
 {
+	_mode = [_this, 1, "", [""]] call BIS_fnc_param;
+	if (count playableUnits > 0) then
 	{
-		if (isPlayer _x) then
 		{
-			if (side _x isEqualTo independent) then
+			if (isPlayer _x) then
 			{
-				VEMFChatMsg = [_msg, _mode];
-				(owner _x) publicVariableClient "VEMFChatMsg";
+				if (side _x isEqualTo independent) then
+				{
+					VEMFChatMsg = [_msg, _mode];
+					(owner _x) publicVariableClient "VEMFChatMsg";
+				};
 			};
-		};
-	} forEach playableUnits;
-	_sent = true;
+		} forEach playableUnits;
+		_sent = true;
+	};
 };
 _sent

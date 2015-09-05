@@ -34,7 +34,8 @@ if (count _pos isEqualTo 3) then
 				_sldrClass = "B_G_Soldier_AR_F";
 				_groups = [];
 				_hc = "allowHeadLessClient" call VEMF_fnc_getSetting;
-				_skills = [["aiSkill"],["accuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"]] call VEMF_fnc_getSetting;
+				_aiDifficulty = [[["aiSkill"],["difficulty"]] call VEMF_fnc_getSetting, 0, "Veteran", [""]] call BIS_fnc_param;
+				_skills = [["aiSkill", _aiDifficulty],["accuracy","aimingShake","aimingSpeed","endurance","spotDistance","spotTime","courage","reloadSpeed","commanding","general"]] call VEMF_fnc_getSetting;
 				_accuracy = _skills select 0;
 				_aimShake = _skills select 1;
 				_aimSpeed = _skills select 2;
