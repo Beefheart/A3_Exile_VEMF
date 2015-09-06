@@ -72,7 +72,7 @@ if not(_mode isEqualTo "") then
 											_locPos = locationPosition _x;
 											_loc = _x;
 											{
-												if (((_x select 0) distance _locPos) < (_x select 1)) then
+												if ((_x distance _locPos) < (_x select 1)) then
 												{
 													_remLocs pushBack _loc;
 												};

@@ -15,13 +15,13 @@
 class VEMFconfig
 {
 	/////////////////////////////
-	VEMF_version = 1.0718.11; /// Do NOT change
+	VEMF_version = 1.0719.10; /// Do NOT change
 	/////////////////////////////
 	/////// Configure VEMF here ///////
 	// Global settings
 	allowHeadLessClient = -1; // HC support is currently broken // Set to 1 if you have (a) headless client(s) | -1 = DISABLED
 	minServerFPS = 20; // Missions will not spawn if server's FPS is below this number
-	validateLoot = 1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
+	validateLoot = -1; // Use -1 to disable. Checks if defined classes in loot and ai gear (except blacklist) are valid. Will output test result to RPT if ERROR logs enabled
 	minPlayers = 1; // Missions will not start until player count reaches this number OR when player count goes below this amount
 	maxGlobalMissions = 5; // Max amount of missions that are allowed to run at the same time
  	timeOutTime = 20; // In minutes. Use -1 to disable mission timeout; Minimal: 5
@@ -102,8 +102,8 @@ class VEMFconfig
 	class DLI // DynamicLocationInvasion settings
 	{
 		maxInvasions = 5; // Max amount of active uncompleted invasions allowed at the same time
-		groupCount = 3; // Amount of groups that spawn at location
-		groupUnits = 4; // Amount of units in each group
+		groupCount = 1; // Amount of groups that spawn at location
+		groupUnits = 2; // Amount of units in each group
 		/* TIP: increase groupCount and decrease groupUnits to make it harder for players. Easier to get flanked from all sides */
 		useLaunchers = 1; // Set to 0 if you do NOT want the AI to have launchers
 		remLaunchers = 1; // Set to 0 if you do NOT want the launcher (and its ammo) to be removed from AI when they die
@@ -113,15 +113,14 @@ class VEMFconfig
 		/* distanceCheck NOTE: set it to the minimal distance between ANY town on the map you are using. Otherwise location selection will fail */
 		distanceTooClose = 2500; // Mission will not spawn closer to random player than this distance in meters
 		distanceMaxPrefered = 4500; // Mission will prefer locations closer than this distance (in meters) to random player
-		crateAltitude = 200; // Crate with parachute will spawn at this altitude (meters)
-		crateSound = 1; // Use -1 to disable the crate from emitting a sound. 1 makes it easier for players to find the crate
-			crateSoundDuration = 120; // How many times with an interval of 2 seconds should the crate emit sound
+		crateAltitude = 250; // Crate with parachute will spawn at this altitude (meters)
+		crateMarker = 1; // Use -1 if you do not want a marker to be placed on the crate
 		crateTypes[] = {"I_CargoNet_01_ammo_F","O_CargoNet_01_ammo_F","B_CargoNet_01_ammo_F","I_supplyCrate_F","Box_East_AmmoVeh_F","Box_NATO_AmmoVeh_F"};
 		smokeTypes[] = {"SmokeShell","SmokeShellBlue","SmokeShellGreen","SmokeShellOrange","SmokeShellRed","SmokeShellYellow"};
 		flairTypes[] = {"Chemlight_green","Chemlight_red","Chemlight_yellow","Chemlight_blue"};
 		placeMines = 1; // Set to -1 if you do not want Anti-Armor mines at missions | using infiSTAR? set _RAM to false
 		minesMode = 1; // 1 = Anti-Armor | 2 = Anti-Personell | 3 = Both Anti-Armor and Anti-Personell
-		minesAmount = 40; // Ignore if placeMines = -1;
+		minesAmount = 20; // Ignore if placeMines = -1;
 		cleanMines = 1; // 1 = remove mines when mission done | 2 = explode mines when mission done :D guarenteed chaos, LOL!
 	};
 
