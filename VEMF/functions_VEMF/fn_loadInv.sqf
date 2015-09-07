@@ -48,10 +48,7 @@ if (typeName _this isEqualTo "ARRAY") then
 									if (_useLaunchers isEqualTo 1) then
 									{
 										_launchers = [_aiGear, 4, [], [[]]] call BIS_fnc_param;
-										if (count _launchers > 0) then
-										{
-											_useLaunchers = true;
-										};
+										if (count _launchers isEqualTo 0) then { _useLaunchers = -1 };
 									};
 									{
 										private ["_unit","_gear","_ammo"];
@@ -81,7 +78,7 @@ if (typeName _this isEqualTo "ARRAY") then
 										{
 											_gear = _backpacks call VEMF_fnc_random;
 											_unit addBackpack _gear;
-											if _useLaunchers then
+											if (_useLaunchers isEqualTo 1) then
 											{
 												if ((floor random 4) isEqualTo 0) then
 												{

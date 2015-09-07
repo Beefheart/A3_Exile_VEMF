@@ -19,6 +19,7 @@ private // Make sure that the vars in this function do not interfere with vars i
 	"_accuracy","_aimShake","_aimSpeed","_stamina","_spotDist","_spotTime","_courage","_reloadSpd","_commanding","_general","_loadInv"
 ];
 
+_units = [];
 _pos = [_this, 0, [], [[]]] call BIS_fnc_param;
 if (count _pos isEqualTo 3) then
 {
