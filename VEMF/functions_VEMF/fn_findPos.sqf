@@ -72,9 +72,21 @@ if not(_mode isEqualTo "") then
 											_locPos = locationPosition _x;
 											_loc = _x;
 											{
-												if ((_x distance _locPos) < (_x select 1)) then
+												if (count _x isEqualTo 2) then
 												{
-													_remLocs pushBack _loc;
+													_pos = [_x, 0, [0,0,0], [[]]] call BIS_fnc_param;
+													if not(_pos isEqualTo [0,0,0]) then
+													{
+														_range = [_x, 1, 600, [0]] call BIS_fnc_param;
+														if ((_pos distance _locPos) < _range) then
+														{
+															_remLocs pushBack _loc;
+														};
+													};
+												};
+												if not(count _x isEqualTo 2) then
+												{
+													["fn_findPos", 0, format["found invalid entry in mission blacklist: %1", _x]] call VEMF_fnc_log;
 												};
 											} forEach _blackPos;
 										};

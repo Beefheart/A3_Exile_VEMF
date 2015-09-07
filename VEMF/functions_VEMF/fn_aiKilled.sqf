@@ -39,9 +39,9 @@ if not isNull _killer then
 	};
 };
 
-_settings = [["removeLaunchers","removeAIbodies"]] call VEMF_fnc_getSetting;
+_settings = [["keepLaunchers","keepAIbodies"]] call VEMF_fnc_getSetting;
 _remLaunchers = _settings select 0;
-if (_remLaunchers isEqualTo 1) then
+if (_remLaunchers isEqualTo -1) then
 {
 	_secWeapon = secondaryWeapon _unit;
 	if not(_secWeapon isEqualTo "") then
@@ -57,7 +57,7 @@ if (_remLaunchers isEqualTo 1) then
 	};
 };
 
-if ((_settings select 1) isEqualTo 1) then // If killEffect enabled
+if ((_settings select 1) isEqualTo -1) then // If killEffect enabled
 {
 	playSound3D ["A3\Missions_F_Bootcamp\data\sounds\vr_shutdown.wss", _unit, false, getPosASL _unit, 2, 1, 60];
 	for "_u" from 1 to 8 do
