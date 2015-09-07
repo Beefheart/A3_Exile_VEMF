@@ -29,8 +29,10 @@ if (count _pos isEqualTo 3) then
 		_grpCount = [_this, 2, -1, [0]] call BIS_fnc_param;
 		if (_grpCount > 0) then
 		{
-			_unitsPerGrp = [_this, 3, -1, [0]] call BIS_fnc_param;
-			if (_unitsPerGrp > 0) then
+			_unitsPerGrpMin = _this select 3;
+			_unitsPerGrpMax = _this select 4;
+
+			if (_unitsPerGrpMin > 0) then
 			{
 				_sldrClass = "B_G_Soldier_AR_F";
 				_groups = [];
@@ -57,6 +59,8 @@ if (count _pos isEqualTo 3) then
 					_grp setBehaviour "AWARE";
 					_grp setCombatMode "RED";
 					_grp allowFleeing 0;
+					_unitsPerGrp = _unitsPerGrpMin + floor random (_unitsPerGrpMax - _unitsPerGrpMin);
+					["fn_spawnAI", 1, format ["Birthing %1 units for group %2...",_unitsPerGrp,_grp]] call VEMF_fnc_log;
 
 					for "_u" from 1 to _unitsPerGrp do
 					{

@@ -10,7 +10,7 @@ if isNil"VEMF_invasCount" then { VEMF_invasCount = 0; };
 if (VEMF_invasCount < _maxInvasions) then
 {
 	_grpCount = [_settings, 1, 1, [0]] call BIS_fnc_param;
-	_groupUnits = [_settings, 2, 1, [0]] call BIS_fnc_param;
+	_groupUnits = _settings select 2;
 	_range = [_settings, 3, 15000, [0]] call BIS_fnc_param;
 	_tooClose = [_settings, 4, 2500, [0]] call BIS_fnc_param;
 	_maxPref = [_settings, 5, 4500, [0]] call BIS_fnc_param;
@@ -21,7 +21,10 @@ if (VEMF_invasCount < _maxInvasions) then
 	_crateVisualMarker = [_settings, 10, 1, [0]] call BIS_fnc_param;
 	_crateMapMarker = [_settings, 11, 1, [0]] call BIS_fnc_param;
 	_crateSpawnSound = [_settings, 12, 1, [0]] call BIS_fnc_param;
-
+	
+	_groupUnitsMin = _groupUnits select 0;
+	_groupUnitsMax = _groupUnits select 1; 
+	
 	// Find A Town to Invade
 	_loc = ["loc", false, position (playableUnits select floor random count playableUnits), _range, _tooClose, _maxPref, _playerCheck] call VEMF_fnc_findPos;
 	if (typeName _loc isEqualTo "ARRAY") then
@@ -46,7 +49,7 @@ if (VEMF_invasCount < _maxInvasions) then
 			if _playerNear then
 			{
 				// Player is Near, so Spawn the Units
-				_spawned = [_loc select 1, _locName, _grpCount, _groupUnits] call VEMF_fnc_spawnAI;
+				_spawned = [_loc select 1, _locName, _grpCount, _groupUnitsMin, _groupUnitsMax] call VEMF_fnc_spawnAI;
 				if (count _spawned > 0) then
 				{
 					// Place mines if enabled

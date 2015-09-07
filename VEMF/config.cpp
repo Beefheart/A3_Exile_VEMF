@@ -68,7 +68,7 @@ class VEMFconfig
 		useMarker = 0; // Use -1 to disable mission markers
 		maxInvasions = 5; // Max amount of active uncompleted invasions allowed at the same time
 		groupCount = 4; // Amount of groups that spawn at location
-		groupUnits = 4; // Amount of units in each group
+		groupUnits[] = {1,4}; // Amount of units in each group; where {min,max}
 		/* TIP: increase groupCount and decrease groupUnits to make it harder for players. Easier to get flanked from all sides */
 		useLaunchers = 0; // Set to 0 if you do NOT want the AI to have launchers
 			remLaunchers = 1; // Set to 0 if you do NOT want the launcher (and its ammo) to be removed from AI when they die
