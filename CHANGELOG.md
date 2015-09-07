@@ -1,5 +1,9 @@
 ## VEMF Changelog
 
+#### `v1.0721.1`
+**[FIXED]** fn_spawnAI.sqf: Suspending not allowed in this context, line 72 <br />
+<br />
+
 #### `v1.0720.6`
 **[NEW]** Automatic removal of loot crate marker when player gets close <br />
 **[ADDED]** Option to enable/disable mission markers <br />
