@@ -62,7 +62,7 @@ if (count _pos isEqualTo 3) then
 					{
 						_newPos = [_pos,0,200,1,0,200,0] call BIS_fnc_findSafePos; // Find Nearby Position
 						_unit = _grp createUnit [_sldrClass, _newPos, [], 0, "FORM"]; // Create Unit There
-						_unit addMPEventHandler ["mpkilled","if (isDedicated) then { _killed = _this select 0; _killer = _this select 1; _nameKiller = name (_this select 1); _dist = _killed distance _killer; [_killed, _killer, _nameKiller, _dist] call VEMF_fnc_aiKilled }"];
+						_unit addMPEventHandler ["mpkilled","if (isDedicated) then { _killed = _this select 0; _killer = _this select 1; _nameKiller = name (_this select 1); _dist = _killed distance _killer; [_killed, _killer, _nameKiller, _dist] spawn VEMF_fnc_aiKilled }"];
 						_unit addRating -8000;
 						_units pushBack _unit;
 						// Set skills
